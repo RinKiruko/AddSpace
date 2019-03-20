@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AddSpace</title>
+</head>
+<body>
+    <div class="container justify-content-center">
+        <form action="{% url Accounts:Login %}" class="col-sm col-md-8 col-lg-6">
+            <div class="form-group">
+                <label for="Email"></label>
+                <input type="email" class="form-control" name="Email" id="Email" aria-describedby="emailHelpId" placeholder="e-mail">
+            </div>
+            <div class="form-group">
+              <label for="Password"></label>
+              <input type="password" class="form-control" name="Password" id="Password" placeholder="Пароль">
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Войти</button>
+                <a href="{% url Accounts:Registration %}" class="btn btn-primary">Регистрация</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

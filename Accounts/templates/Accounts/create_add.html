@@ -1,0 +1,13 @@
+{% extends "AddList/base.html" %}
+{% block content %}
+<form action="{% url Accounts:CreateAdd %}" method="POST">
+    <div class="form-group">
+        {% if CreateForm %}
+            {{CreateForm}}
+        {% else %}
+            {{EditForm}}
+        {% endif %}
+    </div>
+    <input type="submit" value="Опубликовать">
+</form>  
+{% endblock content %}
