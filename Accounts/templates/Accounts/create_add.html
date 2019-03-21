@@ -1,13 +1,25 @@
 {% extends "AddList/base.html" %}
 {% block content %}
-<form action="{% url Accounts:CreateAdd %}" method="POST">
+<form action="{% url 'Accounts:CreateAdd' %}" method="POST">
     <div class="form-group">
-        {% if CreateForm %}
-            {{CreateForm}}
-        {% else %}
-            {{EditForm}}
-        {% endif %}
+        {% csrf_token %}
+        <div class="row col col-sm offset-lg-3 p-lg-3 shadow rounded col-lg-8
+                    align-self-center">
+            <p class="logo text-left" style="font-family:Raleway;font-size:23px;">Создать объявление</p>
+            <div class="w-100"></div>
+            {% for field in CreateForm %}
+                <div class="form-group">                        
+                    {{field.label_tag}} <br>
+                    {{field}} <br>
+                    {{field.errors}}
+                </div>
+                <div class="w-100"></div>
+            {% endfor %}
+            <div class="form group row col">
+                <input type="submit" class="mt-1 btn btn-primary" value="Опубликовать">
+            </div>
+        </div>
     </div>
-    <input type="submit" value="Опубликовать">
+    
 </form>  
 {% endblock content %}

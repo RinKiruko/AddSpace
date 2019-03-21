@@ -1,0 +1,16 @@
+{% extends "AddList/base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9 col-sm mt-3">
+        <div class="row">
+            <h2 class="text-wrap">{{Add.Title}}</h2>
+            <div class="w-100"></div>
+            <p class="description text-wrap ml-4">
+                {{Add.Content}}
+            </p>
+            <div class="w-100"></div>
+            <a href="{% url 'AddList:GetUser' Add.Author.id %}" class="author">{{Add.Author}}</a><span class="text-weight-light">, {{Add.PostingDate}}</span>
+        </div>
+    </div>
+</div>  
+{% endblock content %}

@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +9,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="{% static "AddList/Css/Normalize.css" %}">
+    <link rel="stylesheet" href="{% static "Accounts/Css/Style.css" %}">
 
     <title>AddSpace</title>
 </head>
 <body>
     <div class="container justify-content-center">
-        <form action="{% url Accounts:Login %}" method="POST" class="col row" style="height:100vh;">
+        <form action="{% url 'Accounts:Registration' %}" method="POST" class="col row" style="height:100vh;">
+            {% csrf_token %}
             <div class="row col col-sm offset-lg-3 p-lg-3 shadow rounded col-lg-6 justify-content-center 
                         align-self-center">
                 <p class="logo col text-center" style="font-family:Raleway;font-size:23px;">AddSpace</p>
                 <div class="w-100"></div>
-                {{RegistrationForm}}
-                <div class="w-100"></div>
+                {% for field in RegistrationForm %}
+                    <div class="form-group">                        
+                        {{field.label_tag}}
+                        {{field}}
+                        {{field.errors}}
+                    </div>
+                    <div class="w-100"></div>
+                {% endfor %}
                 <div class="form group row col">
-                    <a href="{% url Accounts:Registration %}" class="mt-1 btn btn-primary col-6 col-sm">Регистрация</a>
+                    <input type="submit" class="mt-1 btn btn-primary col-6 col-sm" value="Регистрация">
                 </div>
-            </div>
-            
+            </div>            
         </form>
     </div>
 

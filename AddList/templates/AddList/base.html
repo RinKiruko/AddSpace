@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="{% static "AddList/Css/Normalize.css" %}">
-    <link rel="stylesheet" href="{% static "AddList/Css/Index.css" %}">
+    <link rel="stylesheet" href="{% static "AddList/Css/index.css" %}">
 </head>
 <body>
     <header class="row align-self-start">
@@ -22,19 +22,18 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url AddList:GetAllAdds %}">Все объявления <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% url 'AddList:GetAllAdds' %}">Все объявления <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url Accounts:AllPostedAdds %}">Мои объявления</a>
+                            <a class="nav-link" href="{% url 'Accounts:AllPostedAdds' %}">Мои объявления</a>
                         </li>
                         {% if User.is_authenticated %}
                         <li class="nav-item">
-                            <p class="navbar-text">{{ User }} </p>
-                            <a href="{% url Accounts:Logout %}" class="nav-link">Выйти</a>                            
+                            <a href="{% url 'Accounts:Logout' %}" class="nav-link">Выйти</a>                            
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a href="{% url Accounts:Login %}" class="nav-link">Войти</a>
+                            <a href="{% url 'Accounts:Login' %}" class="nav-link">Войти</a>
                         </li>
                         {% endif %}
                     </ul>

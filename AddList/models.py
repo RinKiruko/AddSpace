@@ -11,10 +11,10 @@ class Add(models.Model):
     Content = models.TextField(verbose_name='Содержание', null=True,)
 
     def __str__(self):
-        return self.Title + self.Author
+        return self.Title
 
     class Meta:
         db_table = ''
         managed = True
-        verbose_name = 'Add'
-        verbose_name_plural = 'Adds'
+        verbose_name = 'Объявление'
+        verbose_name_plural = 'Объявления'

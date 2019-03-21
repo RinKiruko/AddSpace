@@ -19,7 +19,8 @@ urlpatterns = [
 
 	path('', get_account_main_page, name='AllPostedAdds'),
 	path('create/', create_add, name='CreateAdd'),
-	re_path(r'^edit/(?P<add_id>.+$)', edit_add, name='EditAdd'),
-	re_path(r'^delete/(?P<add_id>.+$)', delete_add, name='DeleteAdd'),
+
+	path('edit/<int:add_id>/', edit_add, name='EditAdd'),
+	path('delete/<int:add_id>/', delete_add, name='DeleteAdd'),
 		
 ]

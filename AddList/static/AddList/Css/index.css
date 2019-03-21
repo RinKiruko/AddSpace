@@ -1,0 +1,14 @@
+.navbar-brand {
+    font-family: 'Raleway', sans-serif;
+}
+.Add {
+    margin: 2rem 0;
+}
+
+.Add > div > a {
+    color: black;
+}
+
+.Add-short_description {
+    margin: 0 2rem;
+}

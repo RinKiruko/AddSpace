@@ -5,24 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "AddList/Css/Normalize.css" %}">
+
     <title>AddSpace</title>
 </head>
 <body>
     <div class="container justify-content-center">
-        <form action="{% url Accounts:Login %}" class="col-sm col-md-8 col-lg-6">
-            <div class="form-group">
-                <label for="Email"></label>
-                <input type="email" class="form-control" name="Email" id="Email" aria-describedby="emailHelpId" placeholder="e-mail">
+        <form action="{% url 'Accounts:Login' %}" method="POST" class="col row" style="height:100vh;">
+            {% csrf_token %}
+            <div class="row col col-sm offset-lg-3 p-lg-3 shadow rounded col-lg-6 justify-content-center 
+                        align-self-center">
+                <p class="logo col text-center" style="font-family:Raleway;font-size:23px;">AddSpace</p>
+                <div class="w-100"></div>
+                <div class="form-group">
+                    {% if form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            Неверный логин или пароль
+                        </div>                      
+                    {% endif %}
+                    {{form.errors}}
+                    <label for="Email">E-mail</label>
+                    <input type="email" class="form-control col-6 col-sm" name="username" id="Email" aria-describedby="emailHelpId" placeholder="e-mail">
+                </div>
+                <div class="w-100"></div>
+                <div class="form-group">
+                    <label for="Password">Пароль</label>
+                    <input type="password" class="form-control col-6 col-sm" name="password" id="Password" placeholder="Пароль">
+                </div>
+                <div class="w-100"></div>
+                <div class="form group row col">
+                    <button type="submit" class="btn btn-primary col-6 col-sm">Войти</button>
+                    <div class="w-100"></div>
+                    <a href="{% url 'Accounts:Registration' %}" class="mt-1 btn btn-primary col-6 col-sm">Регистрация</a>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="Password"></label>
-              <input type="password" class="form-control" name="Password" id="Password" placeholder="Пароль">
-            </div>
-            <div class="row">
-                <button type="submit" class="btn btn-primary">Войти</button>
-                <a href="{% url Accounts:Registration %}" class="btn btn-primary">Регистрация</a>
-            </div>
+            
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

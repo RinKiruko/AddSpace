@@ -1,22 +1,30 @@
 {% extends "AddList/base.html" %}
 {% block content %}
-<ul class="AddList justify-content-center list-unstyled">
-    {% for Add in AddList  %}
-        <li class="Add col col-md-9 col-lg-9">
-            <div class="row">
-                <a href="{% url AddList:GetAdd Add.id %}" class="Add-title">{{ Add.Title }}</a>
-                <a href="{% url AddList:GetAdd Add.id %}" class="Add-short_description">
-                    <p class="Add-short_description">{{ Add.Content|truncatewords:50 }}...</p>
-                </a>
-                <span class="data">{{ Add.PostingDate}} </span>
+<div class="row mt-4">
+    <a href="{% url 'Accounts:CreateAdd' %}" class="btn btn-primary">Создать объявление</a>
+    <div class="w-100"></div>
+    <ul class="AddList justify-content-center list-unstyled offset-lg-2">
+        {% for Add in AddList  %}
+            <li class="Add col col-md-9 col-lg-9">
                 <div class="row">
-                    <a class="btn btn-danger" href="{% url Accounts:DeleteAdd Add.id %}">Удалить</a>
-                    <a href="{% url Accounts:EditAdd %}" class="btn btn-secondary">Редактировать</a>
-                </div>                
-            </div>
-        </li>
-    {% empty %}
-        <p class="empty_list">В данный момент нет ни одного объявления</p>
-    {% endfor %}
-</ul>
+                    <a href="{% url 'AddList:GetAdd' Add.id %}" class="Add-title"><h3>{{ Add.Title }}</h3></a>
+                    <div class="w-100"></div>
+                    <a href="{% url 'AddList:GetAdd' Add.id %}" class="Add-short_description">
+                        <p class="Add-short_description">{{ Add.Content|truncatewords:50 }}...</p>
+                    </a>
+                    <div class="w-100"></div>
+                    <span class="date mt-2 font-weight-light">{{Add.PostingDate}}</span>
+                    <div class="w-100"></div>
+                    <div class="row mt-2">
+                        <a href="{% url 'Accounts:EditAdd' Add.id %}" class="btn btn-secondary mr-3">Редактировать</a>
+                        <a class="btn btn-danger" href="{% url 'Accounts:DeleteAdd' Add.id %}">Удалить</a>
+                    </div>                
+                </div>
+            </li>
+        {% empty %}
+            <p class="empty_list mt-4">В данный момент нет ни одного объявления</p>
+        {% endfor %}
+    </ul>
+</div>
+
 {% endblock content %}
