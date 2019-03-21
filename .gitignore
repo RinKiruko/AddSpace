@@ -1,8 +1,6 @@
 *.pyc
 __*__.py
 __pycache__
-Accounts/migrations/
-AddList/migrations/
 venv/
 Backups/
 */.vscode/
