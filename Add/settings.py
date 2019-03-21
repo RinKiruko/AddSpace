@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 from django.urls import reverse_lazy
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -51,7 +51,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+MIDDLEWARE_CLASSES = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
 ROOT_URLCONF = 'Add.urls'
 
 TEMPLATES = [
@@ -84,6 +86,7 @@ DATABASES = {
 		'PASSWORD': 'add123',
 		'HOST': 'localhost',
 		'PORT':'5432',
+        'CONN_MAX_AGE':500,
 
 	}
 }
@@ -131,3 +134,5 @@ STATIC_ROOT = BASE_DIR + 'static/'
 
 LOGIN_REDIRECT_URL = reverse_lazy('AddList:GetAllAdds')
 LOGOUT_REDIRECT_URL = reverse_lazy('AddList:GetAllAdds')
+
+django_heroku.settings(locals())
