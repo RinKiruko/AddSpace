@@ -25,10 +25,10 @@ def get_add_page(request, id):
     return render(request, 'AddList/add_page.html', context)
 
 def get_user_page(request, id):
-    requested_user = get_object_or_404(User, pk=id).order_by('PostingDate')
+    requested_user = get_object_or_404(User, pk=id)
     if requested_user == request.user:
         return HttpResponseRedirect(reverse('Accounts:AllPostedAdds'))
-    context =  {'AddList': requested_user.adds.all().order_by('PostingDate'),
+    context =  {'AddList': requested_user.adds.all(),
                 'RequestedUser': requested_user,
                 'User': request.user}
     return render(request, 'AddList/user_page.html', context=context)
